@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/services/model/content/article/article.service';
 import { HttpClient } from '@angular/common/http';
-import {Article, ArticlesMessage} from 'src/app/model/content/Article';
+import {Article, ArticlesMessage} from '@bobnetnetwork/cms-model';
 
 @Component({
   selector: 'app-article',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import {CategoriesMessage, Category} from 'src/app/model/content/Category';
+import {CategoriesMessage, Category} from '@bobnetnetwork/cms-model';
 import { CategoryService } from 'src/app/services/model/content/category/category.service';
 
 @Component({

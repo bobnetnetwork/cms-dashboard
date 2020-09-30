@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Article, ArticleMessage} from 'src/app/model/content/Article';
+import {Article, ArticleMessage} from '@bobnetnetwork/cms-model';
 import { ArticleService } from 'src/app/services/model/content/article/article.service';
-import {CategoriesMessage, Category, CategoryMessage} from 'src/app/model/content/Category';
+import {CategoriesMessage, Category, CategoryMessage} from '@bobnetnetwork/cms-model';
 import { CategoryService } from 'src/app/services/model/content/category/category.service';
 import { FormGroup, FormControl } from '@angular/forms';
 

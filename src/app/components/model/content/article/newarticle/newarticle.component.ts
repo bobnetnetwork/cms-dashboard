@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Article, ArticleMessage} from 'src/app/model/content/Article';
+import {Article, ArticleMessage} from '@bobnetnetwork/cms-model';
 import { ArticleService } from 'src/app/services/model/content/article/article.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
