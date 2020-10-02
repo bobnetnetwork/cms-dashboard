@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from '../../../../../model/content/Page';
+import { Page } from '@bobnetnetwork/cms-model';
 import { PageService } from '../../../../../services/model/content/page/page.service';
 
 export class PageMessage {

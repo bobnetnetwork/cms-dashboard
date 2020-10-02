@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Page } from '../../../../model/content/Page';
+import { Page } from '@bobnetnetwork/cms-model';
 import { Observable } from 'rxjs';
 import { BackendConfigService } from '../../../tool/backendconfig/backendconfig.service';
 

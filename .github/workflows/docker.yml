@@ -1,0 +1,26 @@
+on:
+  release:
+    types: [ published ]
+  push:
+    branches:
+      - master
+name: Docker image
+jobs:
+  dashboard-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: bobesz
+          password: ${{ secrets.GITHUB }}
+          registry: docker.pkg.github.com
+          repository: bobnetnetwork/cms-dashboard/dashboard
+          tags: "latest,${{ env.RELEASE_VERSION }}"
+          tag_names: true
+          path: ./

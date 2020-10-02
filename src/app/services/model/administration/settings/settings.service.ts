@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BackendConfigService } from 'src/app/services/tool/backendconfig/backendconfig.service';
-import { Option } from 'src/app/model/administration/Option';
+import { Option } from '@bobnetnetwork/cms-model';
 
 @Injectable({
   providedIn: 'root'

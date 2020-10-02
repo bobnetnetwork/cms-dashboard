@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Role } from 'src/app/model/user/Role';
+import { Role } from '@bobnetnetwork/cms-model';
 import { BackendConfigService } from 'src/app/services/tool/backendconfig/backendconfig.service';
 
 @Injectable({
