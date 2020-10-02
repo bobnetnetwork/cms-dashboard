@@ -19,6 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB }}
         run: | 
           export GITHUB_TOKEN=${{ secrets.GITHUB }}
+          export bob=bobesz
           printenv
       - name: Push to GitHub Packages
         env:
@@ -30,5 +31,6 @@ jobs:
           registry: docker.pkg.github.com
           repository: bobnetnetwork/cms-dashboard/dashboard
           tag_names: true
-          tag_latest: true 
+          tag_latest: true
+          tag_with_ref: true
           path: ./
