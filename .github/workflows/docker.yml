@@ -14,6 +14,10 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
+      - name: Set env
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB }}
+        run: export GITHUB_TOKEN=${{ secrets.GITHUB }}
       - name: Push to GitHub Packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB }} 
