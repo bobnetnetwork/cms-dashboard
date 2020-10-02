@@ -15,12 +15,14 @@ jobs:
           ref: master
           fetch-depth: 0
       - name: Push to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB }} 
         uses: docker/build-push-action@v1
         with:
           username: bobesz
           password: ${{ secrets.GITHUB }}
           registry: docker.pkg.github.com
           repository: bobnetnetwork/cms-dashboard/dashboard
-          tags: "latest,${{ env.RELEASE_VERSION }}"
           tag_names: true
+          tag_latest: true 
           path: ./
