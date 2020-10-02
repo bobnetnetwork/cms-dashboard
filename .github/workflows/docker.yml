@@ -22,5 +22,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: bobnetnetwork/cms-dashboard/dashboard
           tags: "latest,${{ env.RELEASE_VERSION }}"
-          tag_names: true
           path: ./
