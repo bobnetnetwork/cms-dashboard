@@ -17,7 +17,9 @@ jobs:
       - name: Set env
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB }}
-        run: export GITHUB_TOKEN=${{ secrets.GITHUB }}
+        run: | 
+          export GITHUB_TOKEN=${{ secrets.GITHUB }}
+          printenv
       - name: Push to GitHub Packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB }} 
