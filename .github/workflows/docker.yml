@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - name: Push to GitHub Packages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB }} 
         uses: docker/build-push-action@v1
         with:
           username: bobesz
@@ -24,4 +24,5 @@ jobs:
           registry: docker.pkg.github.com
           repository: bobnetnetwork/cms-dashboard/dashboard
           tag_names: true
+          tag_latest: true 
           path: ./
