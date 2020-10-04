@@ -3,4 +3,4 @@ COPY /dist/cms-dashboard /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/
 
-EXPOSE $APP_PORT
+EXPOSE 9423
