@@ -14,16 +14,19 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-      - name: Set env
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB }}
-        run: | 
-          export GITHUB_TOKEN=${{ secrets.GITHUB }}
-          export bob=bobesz
-          printenv
+      - name: Setup Node.js environment
+          uses: actions/setup-node@v1
+          with:
+            node-version: '14.x'
+      - name: Build
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB }}
+          run: |
+            npm install @angular/cli --save
+            npm install typescript --save
+            npm install
+            npm run build
       - name: Push to GitHub Packages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB }} 
         uses: docker/build-push-action@v1
         with:
           username: bobesz
