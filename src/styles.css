@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.articlesCategories {
+  display: inline;
+  list-style: none;
+}
+
+.articlesCategories li {
+  display: inline;
+}
+
+.articlesCategories li:after {
+  content: " ";
+}

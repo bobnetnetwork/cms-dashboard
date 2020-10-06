@@ -56,4 +56,8 @@ export class BackendConfigService {
     return this.getBaseUrl() + '';
   }
 
+  public getHealthCheckUrl(): string {
+    return this.getBaseUrl() + 'health-check/';
+  }
+
 }

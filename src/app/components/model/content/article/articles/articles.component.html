@@ -40,11 +40,14 @@
                   <th>AddedAt</th>
                   <th>Author</th>
                   <th>Status</th>
+                  <th>Categories</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let article of articles">
-                  <td><a href="/articles/{{article.slug}}">{{article.title}}</a></td>
+                  <td><a href="/articles/{{article.slug}}"><img src="admin-lte/dist/img/default-150x150.png"
+                                                                alt="{{article.title}}"
+                                                                class="img-size-50 mr-2">{{article.title}}</a></td>
                   <td>{{article.headline}}</td>
                   <td>{{article.addedAt | date: "yyyy-MM-dd HH:MM"}}</td>
                   <td></td>
@@ -53,6 +56,13 @@
                     <span *ngIf="article.status==='draft'" class="badge badge-info">{{article.status}}</span>
                     <span *ngIf="article.status==='under lectoring'" class="badge badge-warning">{{article.status}}</span>
                     <span *ngIf="article.status==='rejected'" class="badge badge-danger">{{article.status}}</span>
+                  </td>
+                  <td>
+                    <ul class="articlesCategories">
+                      <li *ngFor="let category of article.categories">
+                        {{ category.name }}
+                      </li>
+                    </ul>
                   </td>
                 </tr>
               </tbody>
@@ -63,6 +73,7 @@
                   <th>AddedAt</th>
                   <th>Author</th>
                   <th>Status</th>
+                  <th>Categories</th>
                 </tr>
               </tfoot>
             </table>
