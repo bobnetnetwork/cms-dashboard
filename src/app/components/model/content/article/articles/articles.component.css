@@ -1,0 +1,13 @@
+.articlesCategories {
+  list-style: none;
+  display: inline;
+  padding: 0;
+}
+
+.articlesCategories li {
+  display: inline-block;
+}
+
+.articlesCategories li + li::before {
+  content: ",";
+}
