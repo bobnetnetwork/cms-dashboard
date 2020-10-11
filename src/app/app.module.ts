@@ -25,6 +25,8 @@ import { RoleComponent } from './components/model/administration/role/role/role.
 import { OptionsComponent } from './components/model/administration/options/options/options.component';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,8 @@ import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
+    NgSelectModule
   ],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }],
   bootstrap: [AppComponent]

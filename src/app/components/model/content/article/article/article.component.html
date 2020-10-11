@@ -170,9 +170,14 @@
                             <!-- /.card-header -->
                             <div class="card-body pad">
                                 <div class="mb-3">
-                                    <select class="form-control" formControlName="categories" name="categories" searchable="Search here..">
-                                            <option *ngFor="let category1 of categories" value="{{category1.slug}}">{{category1.name}}</option>
-                                    </select>
+                                  <ng-select [items]="categories"
+                                             bindLabel="name"
+                                             placeholder="Select Category"
+                                             appendTo="body"
+                                             [multiple]="true"
+                                             [(ngModel)]="selected"
+                                              formControlName="categories">
+                                  </ng-select>
                                 </div>
                             </div>
                         </div>

@@ -20,11 +20,16 @@ export class ArticleComponent implements OnInit {
   article: Article;
   articleForm: FormGroup;
   categories: Category[];
+  selected: Category[];
 
   constructor(private route: ActivatedRoute, private service: ArticleService, private categoryService: CategoryService) {
     this.slug = this.route.snapshot.paramMap.get('articleslug');
     this.getArticle();
     this.getCategories();
+  }
+
+  getSelectedValue(){
+    console.log(this.selected);
   }
 
   private getArticle(): void{
@@ -33,6 +38,7 @@ export class ArticleComponent implements OnInit {
       this.msg = res as ArticleMessage;
       this.article = this.msg.content as Article;
       this.generateForm();
+      this.selected = this.article.categories;
     });
   }
 
@@ -87,6 +93,11 @@ export class ArticleComponent implements OnInit {
     this.article.title = this.articleForm.get('title').value;
     this.article.content = this.articleForm.get('content').value;
     this.article.headline = this.articleForm.get('headline').value;
+    this.article.categories = this.selected;
+    this.service.updateArticle(this.article).subscribe(res1 => {
+      console.log('Update log: ', res1);
+    });
+    /*
     const catSlug: string = this.articleForm.get('categories').value;
     this.categoryService.getCategoy(catSlug).subscribe( res => {
       this.c2msg = res as CategoryMessage;
@@ -96,6 +107,6 @@ export class ArticleComponent implements OnInit {
       this.service.updateArticle(this.article).subscribe(res1 => {
         console.log('Update log: ', res1);
       });
-    });
+    });*/
   }
 }
