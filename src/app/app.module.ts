@@ -12,7 +12,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArticleComponent } from './components/model/content/article/article/article.component';
 import { PagesComponent } from './components/model/content/page/pages/pages.component';
 import { PageComponent } from './components/model/content/page/page/page.component';
-import { NewarticleComponent } from './components/model/content/article/newarticle/newarticle.component';
 import { NewpageComponent } from './components/model/content/page/newpage/newpage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/model/content/category/categories/categories.component';
@@ -38,7 +37,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ArticleComponent,
     PagesComponent,
     PageComponent,
-    NewarticleComponent,
     NewpageComponent,
     CategoriesComponent,
     CategoryComponent,
