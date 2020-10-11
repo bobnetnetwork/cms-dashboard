@@ -43,7 +43,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let article of articles">
+                <tr *ngFor="let article of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
                   <td><a href="/articles/{{article.slug}}"><img src="admin-lte/dist/img/default-150x150.png"
                                                                 alt="{{article.title}}"
                                                                 class="img-size-50 mr-2">{{article.title}}</a></td>
@@ -76,14 +76,12 @@
             </table>
           </div>
           <!-- /.card-body -->
+
           <div class="card-footer clearfix">
-            <ul class="pagination pagination-sm m-0 float-right">
-              <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-            </ul>
+
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+
+
           </div>
         </div>
         </div>

@@ -25,6 +25,7 @@ import { OptionsComponent } from './components/model/administration/options/opti
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     EditorModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxPaginationModule
   ],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }],
   bootstrap: [AppComponent]
