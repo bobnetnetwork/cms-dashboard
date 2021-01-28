@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ArticleService } from 'src/app/services/model/content/article/article.service';
 import { HttpClient } from '@angular/common/http';
-import {Article, ArticlesMessage} from 'src/app/model/content/Article';
+import {Article, ArticlesMessage} from '@bobnetnetwork/cms-model';
 
 @Component({
   selector: 'app-article',
@@ -13,6 +13,8 @@ export class ArticlesComponent implements OnInit {
 
   articles: Article[];
   msg: ArticlesMessage;
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
   constructor(private service: ArticleService) {
     this.service.getAllArticles().subscribe(res => {

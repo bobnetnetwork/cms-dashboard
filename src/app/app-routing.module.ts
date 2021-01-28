@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticlesComponent } from './components/model/content/article/articles/articles.component';
-import { NewarticleComponent } from './components/model/content/article/newarticle/newarticle.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArticleComponent} from './components/model/content/article/article/article.component';
 import { PagesComponent } from './components/model/content/page/pages/pages.component';
@@ -20,7 +19,6 @@ const routes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'articles', component: ArticlesComponent},
   {path: 'articles/:articleslug', component: ArticleComponent},
-  {path: 'new-article', component: NewarticleComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'categories/:categoryslug', component: CategoryComponent},
   {path: 'tags', component: TagsComponent},
@@ -35,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

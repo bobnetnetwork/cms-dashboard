@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Article, ArticleMessage} from 'src/app/model/content/Article';
+import {Article, ArticleMessage} from '@bobnetnetwork/cms-model';
 import { ArticleService } from 'src/app/services/model/content/article/article.service';
-import {CategoriesMessage, Category, CategoryMessage} from 'src/app/model/content/Category';
+import {CategoriesMessage, Category} from '@bobnetnetwork/cms-model';
 import { CategoryService } from 'src/app/services/model/content/category/category.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -13,33 +13,42 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ArticleComponent implements OnInit {
 
-  private slug: string;
+  private readonly slug: string;
   private msg: ArticleMessage;
-  private cmsg: CategoriesMessage;
-  private c2msg: CategoryMessage;
+  private categoriesMessage: CategoriesMessage;
   article: Article;
   articleForm: FormGroup;
   categories: Category[];
+  selected: Category[];
 
   constructor(private route: ActivatedRoute, private service: ArticleService, private categoryService: CategoryService) {
     this.slug = this.route.snapshot.paramMap.get('articleslug');
-    this.getArticle();
-    this.getCategories();
+    if(this.slug === "add-new-article"){
+      this.article = new Article();
+      this.generateForm();
+      this.selected = this.article.categories;
+      this.getCategories();
+    } else {
+      this.getArticle();
+      this.getCategories();
+    }
+
   }
 
   private getArticle(): void{
+
     this.service.getArticle(this.slug).subscribe(res => {
-      console.log(res);
       this.msg = res as ArticleMessage;
       this.article = this.msg.content as Article;
       this.generateForm();
+      this.selected = this.article.categories;
     });
   }
 
   private getCategories(): void {
     this.categoryService.getAllCategories().subscribe( res => {
-      this.cmsg = res as CategoriesMessage;
-      this.categories = this.cmsg.content;
+      this.categoriesMessage = res as CategoriesMessage;
+      this.categories = this.categoriesMessage.content;
     });
   }
 
@@ -78,7 +87,6 @@ export class ArticleComponent implements OnInit {
 
   delete(): void {
     this.service.deleteArticle(this.article.slug).subscribe(res => {
-      console.log('Delete log: ', res);
       window.location.href = '/articles';
     });
   }
@@ -87,15 +95,17 @@ export class ArticleComponent implements OnInit {
     this.article.title = this.articleForm.get('title').value;
     this.article.content = this.articleForm.get('content').value;
     this.article.headline = this.articleForm.get('headline').value;
-    const catSlug: string = this.articleForm.get('categories').value;
-    this.categoryService.getCategoy(catSlug).subscribe( res => {
-      this.c2msg = res as CategoryMessage;
-      console.log(res);
-      this.article.categories = [this.c2msg.content];
-      console.log(this.article.categories);
-      this.service.updateArticle(this.article).subscribe(res1 => {
-        console.log('Update log: ', res1);
+    this.article.categories = this.selected;
+    if(this.slug === "add-new-article") {
+      this.service.insertArticle(this.article).subscribe( res2 => {
+        this.msg = res2;
+        window.location.href = '/articles/' + this.msg.content.slug;
       });
-    });
+    } else {
+      this.service.updateArticle(this.article).subscribe(res1 => {
+
+      });
+    }
+
   }
 }

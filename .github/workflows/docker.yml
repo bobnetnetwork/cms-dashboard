@@ -1,0 +1,49 @@
+on:
+  release:
+    types: [ published ]
+  push:
+    branches:
+      - master
+name: Docker image
+jobs:
+  dashboard-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB }}
+        run: |
+          npm install @angular/cli --save
+          npm install typescript --save
+          npm install
+          npm run build
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: bobnetnetwork/cms-dashboard
+          tag_names: true
+          tag_latest: true
+          tag_with_ref: true
+          path: ./
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: bobesz
+          password: ${{ secrets.GITHUB }}
+          registry: docker.pkg.github.com
+          repository: bobnetnetwork/cms-dashboard/dashboard
+          tag_names: true
+          tag_latest: true
+          tag_with_ref: true
+          path: ./

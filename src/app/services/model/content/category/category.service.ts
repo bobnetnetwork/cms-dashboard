@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from 'src/app/model/content/Category';
+import { Category } from '@bobnetnetwork/cms-model';
 import { BackendConfigService } from 'src/app/services/tool/backendconfig/backendconfig.service';
 
 @Injectable({

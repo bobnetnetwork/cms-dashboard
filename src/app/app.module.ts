@@ -12,7 +12,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArticleComponent } from './components/model/content/article/article/article.component';
 import { PagesComponent } from './components/model/content/page/pages/pages.component';
 import { PageComponent } from './components/model/content/page/page/page.component';
-import { NewarticleComponent } from './components/model/content/article/newarticle/newarticle.component';
 import { NewpageComponent } from './components/model/content/page/newpage/newpage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/model/content/category/categories/categories.component';
@@ -25,6 +24,9 @@ import { RoleComponent } from './components/model/administration/role/role/role.
 import { OptionsComponent } from './components/model/administration/options/options/options.component';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,6 @@ import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
     ArticleComponent,
     PagesComponent,
     PageComponent,
-    NewarticleComponent,
     NewpageComponent,
     CategoriesComponent,
     CategoryComponent,
@@ -53,7 +54,9 @@ import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
+    NgSelectModule,
+    NgxPaginationModule
   ],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }],
   bootstrap: [AppComponent]

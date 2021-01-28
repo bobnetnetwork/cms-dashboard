@@ -10,9 +10,9 @@ export class BackendConfigService {
   private beApiPath: string;
 
   constructor() {
-    this.bePort = '9421';
-    this.beHost = '10.9.110.111';
-    this.beProtocol = 'http';
+    this.bePort = '443';
+    this.beHost = 'cms-backend.bobesz.net';
+    this.beProtocol = 'https';
     this.beApiPath = '/api/v01/';
   }
 
@@ -54,6 +54,10 @@ export class BackendConfigService {
 
   public getSettingsUrl(): string {
     return this.getBaseUrl() + '';
+  }
+
+  public getHealthCheckUrl(): string {
+    return this.getBaseUrl() + 'health-check/';
   }
 
 }
