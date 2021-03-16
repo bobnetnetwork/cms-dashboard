@@ -23,7 +23,7 @@
     "@angular/router": "~11.2.5",
     "@bobnetnetwork/cms-model": "0.0.15",
     "@ng-select/ng-select": "^6.1.0",
-    "@tinymce/tinymce-angular": "^4.2.0",
+    "@tinymce/tinymce-angular": "^4.2.1",
     "admin-lte": "^3.0.5",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.6.3",
